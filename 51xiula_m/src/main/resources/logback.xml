@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+<!-- -->
+<configuration scan="true" scanPeriod="60 seconds" debug="true">
+	<!-- 日志保存路径为tomcat下面的logs下面的mobileLog文件夹，logback会自动创建文件夹，这样设置了就可以输出日志文件了 -->
+	<property name="logbase" value="${catalina.base}/logs" />
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>[message]: %m%n[class]: %c%n[time]: %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %logger{80}.%M %-5level %n%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">  
+            <level>ERROR</level>
+        </filter> 
+	</appender>
+	<appender name="rolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名 -->
+			<FileNamePattern>${logbase}/trqbuyer.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">  
+            <level>ERROR</level>
+            <level>INFO</level>
+            <level>DEBUG</level>
+        </filter>  
+		<encoder>
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>[message]: %m%n[class]: %c%n[time]: %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %logger{80}.%M %-5level %n%n</pattern>
+		</encoder>
+		
+		<!--日志文件最大的大小 -->
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+		
+	</appender>
+	<logger name="com.mchange" level="DEBUG" />
+	<logger name="org.apache.struts" level="DEBUG" />
+	<logger name="org.apache.commons" level="DEBUG" />
+	<logger name="com.ranuan.ent" level="DEBUG" />
+	<logger name="com.ranuan.core" level="DEBUG" />
+	<logger name="com.jranuan" level="DEBUG" />
+	<root level="INFO">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="rolling" />
+	</root>
+</configuration>

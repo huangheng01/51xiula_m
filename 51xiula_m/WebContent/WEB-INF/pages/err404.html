@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<#include "_/_meta.html"/>
+		<#include "_/_header_v2.html"/>
+	</head>
+	<body style="background:#EEEEEE;">
+		<div class="top404">
+			<div class="mint">
+				<div class="top404-r">你好，请
+					<a href="${root}/home/login/index" class="sign">登录</a><i>
+					|</i><a href="${root}/home/login/register">注册</a><i>|
+					</i><a href="${root}/main/account/center" class="top404-r-w">我的账户</a>
+				</div>
+			</div>
+		</div>
+		<div class="header404">
+			<div class="mint">
+				<div class="logo404">
+					<a href="javascript:;"><img src="${root}/assets/img/rqb/logo-.png"></a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="chj-404">
+			<div class="chj-404-bj">
+				<img src="${root}/assets/img/rqb/chj-12.png">
+			</div>
+			<p>对不起，系统正处于维护中，请稍后访问！</p>
+			<a href="${root}/main/home/index">返回首页</a>
+		</div>
+		
+		<div class="ui-bottom">
+			<div class="mint">
+				<div class="ui-bottom-l">
+					<a href="${root}/main/home/index">91人气</a>|
+					<a href="${root}/main/home/about">关于我们</a>|
+					<a href="javascript:;">意见征集
+						<div class="ui-bottom-ts">
+							<div class="ui-bottom-ts-t">
+								<p><strong>意见征集</strong>你的意见，我来优化</p>
+								<p>欢迎各位电商大伽前来吐槽！</p>
+								<span>吐槽邮箱：advise@91renqi.com</span>
+							</div>
+							<div class="ui-bottom-ts-b">
+								<p>(平台会挑选优秀意见，并结合自身实际情况优化网站，让91人气满足商家的更多要求)</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				<p class="ui-bottom-r">Copyright©20016  91renqi.com | 沪ICP备16013565号</p>
+			</div>
+		</div>
+		
+	</body>
+<script type="text/javascript">
+/** 控制版权在底部 **/
+$(function () {
+		if($(window).height()>833){
+		$(".ui-bottom").addClass("ui-bottom-fixd");
+	}
+	$(window).resize(function () {
+		if($(window).height()>833){			
+			$(".ui-bottom").addClass("ui-bottom-fixd");
+		}else{
+			$(".ui-bottom").removeClass("ui-bottom-fixd");
+		}
+	});
+})
+</script>
+</html>
